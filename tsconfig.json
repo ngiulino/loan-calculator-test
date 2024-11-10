@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+      "target": "ESNext",               // Modern JavaScript features
+      "module": "CommonJS",             // CommonJS module system for Node.js
+      "moduleResolution": "node",
+      "lib": ["ESNext", "DOM"],         // Support for DOM elements
+      "strict": true,                   // Enable strict mode for TypeScript
+      "skipLibCheck": true,             // Skip type checks for libraries
+      "esModuleInterop": true,          // Allow default imports from commonjs
+      "types": ["@playwright/test"]     // Include Playwright types
+    },
+    "include": ["tests/**/*.ts"]         // Specify where TypeScript should look for test files
+  }
+  
