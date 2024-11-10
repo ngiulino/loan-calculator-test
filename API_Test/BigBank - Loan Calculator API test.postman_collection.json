@@ -1,0 +1,366 @@
+{
+	"info": {
+		"_postman_id": "a14dfbe4-fc0f-4a64-aca0-bdf88ae3eb15",
+		"name": "BigBank - Loan Calculator API test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2182283"
+	},
+	"item": [
+		{
+			"name": "Valid Input - Standard Values",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"  pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response contains monthlyPayment and apr\", function () {",
+							"  var jsonData = pm.response.json();",
+							"  pm.expect(jsonData).to.have.property('monthlyPayment');",
+							"  pm.expect(jsonData).to.have.property('apr');",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"administrationFee\": 3.99,\n  \"amount\": 5000,\n  \"conclusionFee\": 100,\n  \"currency\": \"EUR\",\n  \"interestRate\": 16.8,\n  \"maturity\": 60,\n  \"monthlyPaymentDay\": 15,\n  \"productType\": \"SMALL_LOAN_EE01\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://taotlus.bigbank.ee/api/v1/loan/calculate",
+					"protocol": "https",
+					"host": [
+						"taotlus",
+						"bigbank",
+						"ee"
+					],
+					"path": [
+						"api",
+						"v1",
+						"loan",
+						"calculate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Boundary Values - Low Boundary",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"  pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"administrationFee\": 3.99,\n  \"amount\": 500,\n  \"conclusionFee\": 100,\n  \"currency\": \"EUR\",\n  \"interestRate\": 16.8,\n  \"maturity\": 12,\n  \"monthlyPaymentDay\": 15,\n  \"productType\": \"SMALL_LOAN_EE01\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://taotlus.bigbank.ee/api/v1/loan/calculate",
+					"protocol": "https",
+					"host": [
+						"taotlus",
+						"bigbank",
+						"ee"
+					],
+					"path": [
+						"api",
+						"v1",
+						"loan",
+						"calculate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Boundary Values - High Boundary",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"  pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"administrationFee\": 3.99,\n  \"amount\": 30000,\n  \"conclusionFee\": 100,\n  \"currency\": \"EUR\",\n  \"interestRate\": 16.8,\n  \"maturity\": 120,\n  \"monthlyPaymentDay\": 15,\n  \"productType\": \"SMALL_LOAN_EE01\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://taotlus.bigbank.ee/api/v1/loan/calculate",
+					"protocol": "https",
+					"host": [
+						"taotlus",
+						"bigbank",
+						"ee"
+					],
+					"path": [
+						"api",
+						"v1",
+						"loan",
+						"calculate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Invalid Input - Amount or Period too Low",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response contains totalRepayableAmount\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.property('totalRepayableAmount');",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"administrationFee\": 3.99,\n  \"amount\": 10,\n  \"conclusionFee\": 100,\n  \"currency\": \"EUR\",\n  \"interestRate\": 16.8,\n  \"maturity\": 1,\n  \"monthlyPaymentDay\": 15,\n  \"productType\": \"SMALL_LOAN_EE01\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://taotlus.bigbank.ee/api/v1/loan/calculate",
+					"protocol": "https",
+					"host": [
+						"taotlus",
+						"bigbank",
+						"ee"
+					],
+					"path": [
+						"api",
+						"v1",
+						"loan",
+						"calculate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Invalid Input - Amount or Period too High",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response contains totalRepayableAmount\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.property('totalRepayableAmount');",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"administrationFee\": 3.99,\n  \"amount\": 10,\n  \"conclusionFee\": 100,\n  \"currency\": \"EUR\",\n  \"interestRate\": 16.8,\n  \"maturity\": 1,\n  \"monthlyPaymentDay\": 15,\n  \"productType\": \"SMALL_LOAN_EE01\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://taotlus.bigbank.ee/api/v1/loan/calculate",
+					"protocol": "https",
+					"host": [
+						"taotlus",
+						"bigbank",
+						"ee"
+					],
+					"path": [
+						"api",
+						"v1",
+						"loan",
+						"calculate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Zero or Null Values",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400 or 500\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([400, 500]);",
+							"});",
+							"",
+							"pm.test(\"Error message for zero values\", function () {",
+							"  var jsonData = pm.response.json();",
+							"  pm.expect(jsonData).to.have.property('error');",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"administrationFee\": 3.99,\n  \"amount\": 0,\n  \"conclusionFee\": 100,\n  \"currency\": \"EUR\",\n  \"interestRate\": 16.8,\n  \"maturity\": 0,\n  \"monthlyPaymentDay\": 15,\n  \"productType\": \"SMALL_LOAN_EE01\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://taotlus.bigbank.ee/api/v1/loan/calculate",
+					"protocol": "https",
+					"host": [
+						"taotlus",
+						"bigbank",
+						"ee"
+					],
+					"path": [
+						"api",
+						"v1",
+						"loan",
+						"calculate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Negative values",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 500\", function () {",
+							"  pm.response.to.have.status(500);",
+							"});",
+							"",
+							"pm.test(\"Error message for negative values\", function () {",
+							"  var jsonData = pm.response.json();",
+							"  pm.expect(jsonData).to.have.property('error');",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"administrationFee\": 3.99,\n  \"amount\": -5000,\n  \"conclusionFee\": 100,\n  \"currency\": \"EUR\",\n  \"interestRate\": 16.8,\n  \"maturity\": -12,\n  \"monthlyPaymentDay\": 15,\n  \"productType\": \"SMALL_LOAN_EE01\"\n}\n\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://taotlus.bigbank.ee/api/v1/loan/calculate",
+					"protocol": "https",
+					"host": [
+						"taotlus",
+						"bigbank",
+						"ee"
+					],
+					"path": [
+						"api",
+						"v1",
+						"loan",
+						"calculate"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

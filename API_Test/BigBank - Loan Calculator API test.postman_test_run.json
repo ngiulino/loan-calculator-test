@@ -1,0 +1,269 @@
+{
+	"id": "9add3140-9378-493f-bb6e-1f53f0402acd",
+	"name": "BigBank - Loan Calculator API test",
+	"timestamp": "2024-11-09T22:17:10.437Z",
+	"collection_id": "2182283-a14dfbe4-fc0f-4a64-aca0-bdf88ae3eb15",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 12,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2024-11-09T22:17:09.026Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "650cd6f6-7047-4b44-bfe4-4857ff435fa4",
+			"name": "Valid Input - Standard Values",
+			"url": "https://taotlus.bigbank.ee/api/v1/loan/calculate",
+			"time": 244,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response contains monthlyPayment and apr": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response contains monthlyPayment and apr": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				244
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response contains monthlyPayment and apr": true
+				}
+			]
+		},
+		{
+			"id": "827e8f74-d76e-4da9-bc97-9bed17170b63",
+			"name": "Boundary Values - Low Boundary",
+			"url": "https://taotlus.bigbank.ee/api/v1/loan/calculate",
+			"time": 129,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				129
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "d1fb8222-fab0-43ce-a4ff-94dd026dbe99",
+			"name": "Boundary Values - High Boundary",
+			"url": "https://taotlus.bigbank.ee/api/v1/loan/calculate",
+			"time": 416,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				416
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "16066fee-bab5-4fd2-8d2e-a637b3c470dd",
+			"name": "Invalid Input - Amount or Period too Low",
+			"url": "https://taotlus.bigbank.ee/api/v1/loan/calculate",
+			"time": 81,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response contains totalRepayableAmount": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response contains totalRepayableAmount": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				81
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response contains totalRepayableAmount": true
+				}
+			]
+		},
+		{
+			"id": "3e498be5-9714-43cb-bdbb-661a3fbfc274",
+			"name": "Invalid Input - Amount or Period too High",
+			"url": "https://taotlus.bigbank.ee/api/v1/loan/calculate",
+			"time": 78,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response contains totalRepayableAmount": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response contains totalRepayableAmount": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				78
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response contains totalRepayableAmount": true
+				}
+			]
+		},
+		{
+			"id": "c7c54f02-e3aa-426f-9c70-0f937c5148ef",
+			"name": "Zero or Null Values",
+			"url": "https://taotlus.bigbank.ee/api/v1/loan/calculate",
+			"time": 51,
+			"responseCode": {
+				"code": 500,
+				"name": "Internal Server Error"
+			},
+			"tests": {
+				"Status code is 400 or 500": true,
+				"Error message for zero values": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400 or 500": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Error message for zero values": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				51
+			],
+			"allTests": [
+				{
+					"Status code is 400 or 500": true,
+					"Error message for zero values": true
+				}
+			]
+		},
+		{
+			"id": "ba34c83e-23eb-4757-a72d-d950f7b6878d",
+			"name": "Negative values",
+			"url": "https://taotlus.bigbank.ee/api/v1/loan/calculate",
+			"time": 55,
+			"responseCode": {
+				"code": 500,
+				"name": "Internal Server Error"
+			},
+			"tests": {
+				"Status code is 500": true,
+				"Error message for negative values": true
+			},
+			"testPassFailCounts": {
+				"Status code is 500": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Error message for negative values": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				55
+			],
+			"allTests": [
+				{
+					"Status code is 500": true,
+					"Error message for negative values": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 1054,
+	"collection": {
+		"requests": [
+			{
+				"id": "650cd6f6-7047-4b44-bfe4-4857ff435fa4",
+				"method": "POST"
+			},
+			{
+				"id": "827e8f74-d76e-4da9-bc97-9bed17170b63",
+				"method": "POST"
+			},
+			{
+				"id": "d1fb8222-fab0-43ce-a4ff-94dd026dbe99",
+				"method": "POST"
+			},
+			{
+				"id": "16066fee-bab5-4fd2-8d2e-a637b3c470dd",
+				"method": "POST"
+			},
+			{
+				"id": "3e498be5-9714-43cb-bdbb-661a3fbfc274",
+				"method": "POST"
+			},
+			{
+				"id": "c7c54f02-e3aa-426f-9c70-0f937c5148ef",
+				"method": "POST"
+			},
+			{
+				"id": "ba34c83e-23eb-4757-a72d-d950f7b6878d",
+				"method": "POST"
+			}
+		]
+	}
+}
