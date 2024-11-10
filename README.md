@@ -1,6 +1,11 @@
 # **Loan Calculator Test Project**
 
-This repository contains an automated test suite for the Loan Calculator feature, covering both UI tests with Playwright and API tests with Postman. The purpose of this project is to verify the functionality of the loan calculator modal, ensure real-time updates in response to user inputs, and validate API calculations.
+This repository contains an automated test suite for the Loan Calculator feature, covering both UI tests with Playwright and API tests with Postman and the test document. The purpose of this project is to verify the functionality of the loan calculator modal, ensure real-time updates in response to user inputs, and validate API calculations.
+
+The repository contains:
+- The test document (Loan Calculator Test.docx);
+- The API test collection and report (BigBank - Loan Calculator API test.postman_collection.json and BigBank - Loan Calculator API test.postman_test_run.json);
+- The project of test automated (LoanCalculatorTask_AF) 
 
 ## **Prerequisites**
 
